@@ -5,186 +5,289 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Café e Prosa Itu</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Café e Prosa, cafeteria no Novo Centro de Itu. Café da manhã, almoço e café da tarde.">
+<meta name="description" content="Café e Prosa, cafeteria no Novo Centro de Itu (SP). Café da manhã, almoço e café da tarde, todos os dias a partir das 7h30.">
+<meta name="theme-color" content="#2E4A3B">
+<meta property="og:title" content="Café e Prosa · Itu">
+<meta property="og:description" content="Café passado na hora, prosa sem pressa. Rua Márcia Pierroni, 68, Novo Centro, Itu.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232E4A3B'/%3E%3Cpath d='M14 26h30v10a15 15 0 0 1-30 0z' fill='%23F1EFE4'/%3E%3Cpath d='M44 29h3a6 6 0 0 1 0 12h-4' fill='none' stroke='%23F1EFE4' stroke-width='4'/%3E%3Cpath d='M24 10c-3 4 3 6 0 10M33 10c-3 4 3 6 0 10' fill='none' stroke='%23C4861C' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"Café e Prosa","telephone":"+55-11-97435-1734","email":"itu.cafeeprosa@gmail.com",
+"address":{"@type":"PostalAddress","streetAddress":"Rua Márcia Pierroni, 68","addressLocality":"Itu","addressRegion":"SP","postalCode":"13303-525","addressCountry":"BR"},
+"servesCuisine":"Café, lanches, almoço","sameAs":["https://www.instagram.com/cafeeprosaitu/"],
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:30","closes":"19:30"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"07:30","closes":"17:00"}]}
+</script>
 <style>
-/* Layout: conversa em balões — hero com balão de horário, seções alternando lados como uma prosa */
+/* Layout (mobile first): uma coluna como uma conversa no celular; em telas maiores as falas se dividem em duas colunas */
 :root{
   --paper:#F1EFE4; --paper-2:#E6E3D3; --ink:#2B1D16; --ink-soft:#5E4D42;
-  --leaf:#2E4A3B; --ochre:#C4861C; --line:#D3CDBB; --on-leaf:#F1EFE4;
+  --leaf:#2E4A3B; --ochre:#C4861C; --line:#D3CDBB; --on-leaf:#F1EFE4; --crema:#D9B98A;
   --display:"Gloock", Georgia, "Times New Roman", serif;
   --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --hand:"Caveat", "Comic Sans MS", cursive;
-  --r:18px;
+  --r:18px; --sec:64px; --bar:68px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#1C1814; --paper-2:#26201A; --ink:#EFE8DC; --ink-soft:#B8AB9A;
-  --leaf:#3F6450; --ochre:#E2A23A; --line:#3A322A; --on-leaf:#F4EFE6; color-scheme:dark}}
+  --leaf:#3F6450; --ochre:#E2A23A; --line:#3A322A; --on-leaf:#F4EFE6; --crema:#8A6A45; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#1C1814; --paper-2:#26201A; --ink:#EFE8DC; --ink-soft:#B8AB9A;
-  --leaf:#3F6450; --ochre:#E2A23A; --line:#3A322A; --on-leaf:#F4EFE6; color-scheme:dark}
+  --leaf:#3F6450; --ochre:#E2A23A; --line:#3A322A; --on-leaf:#F4EFE6; --crema:#8A6A45; color-scheme:dark}
 
+/* ---------- base: celular ---------- */
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:1.6;padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom,0px));-webkit-text-size-adjust:100%}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--ochre);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
 h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;text-wrap:balance;margin:0}
-h2{font-size:clamp(2.1rem,5vw,3.4rem)}
+h2{font-size:clamp(2rem,8vw,3.4rem)}
 p{margin:0}
-.eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--leaf)}
-.hand{font-family:var(--hand);color:var(--ochre);font-size:1.6rem;line-height:1}
-
-/* header */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.logo{font-family:var(--display);font-size:1.5rem;text-decoration:none;white-space:nowrap}
-.logo em{font-style:normal;font-family:var(--hand);color:var(--ochre);font-size:1.7rem;margin:0 2px}
-nav{display:flex;gap:22px;font-size:.95rem;font-weight:500}
-nav a{text-decoration:none;color:var(--ink-soft)}
-nav a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:.98rem}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--leaf)}
+.hand{font-family:var(--hand);color:var(--ochre);font-size:1.5rem;line-height:1}
+section{padding-block:var(--sec)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 20px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:1rem}
 .btn-leaf{background:var(--leaf);color:var(--on-leaf)}
-.btn-leaf:hover{filter:brightness(1.1)}
 .btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
-.btn-line:hover{background:var(--paper-2)}
-@media (max-width:760px){nav{display:none}}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* header + menu */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.logo{font-family:var(--display);font-size:1.45rem;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
+.logo em{font-style:normal;font-family:var(--hand);color:var(--ochre);font-size:1.6rem}
+.logo svg{width:30px;height:30px}
+.menu-btn{width:48px;height:48px;border:0;border-radius:12px;background:var(--paper-2);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.menu-btn svg{width:24px;height:24px}
+nav.primary{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:8px max(18px,env(safe-area-inset-right,0px)) 18px max(18px,env(safe-area-inset-left,0px));display:grid}
+nav.primary a{text-decoration:none;font-family:var(--display);font-size:1.6rem;padding:12px 0;border-bottom:1px solid var(--line)}
+nav.primary a:last-child{border-bottom:0}
+.head-cta{display:none}
 
 /* hero */
-.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;padding-block:64px 72px}
-.hero h1{font-size:clamp(2.9rem,8vw,5.6rem);letter-spacing:-.01em}
+.hero{padding-block:36px 56px}
+.hero .wrap{display:grid;gap:44px}
+.hero h1{font-size:clamp(2.6rem,12vw,5.6rem);letter-spacing:-.01em;margin-top:14px}
 .hero h1 span{display:block;color:var(--leaf)}
-.hero .lede{margin-top:22px;max-width:46ch;color:var(--ink-soft);font-size:1.15rem}
-.hero .ctas{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
-.bubble{position:relative;background:var(--leaf);color:var(--on-leaf);border-radius:28px 28px 28px 6px;padding:30px 30px 28px;min-width:0}
-.bubble::after{content:"";position:absolute;left:0;bottom:-22px;width:34px;height:24px;background:var(--leaf);clip-path:polygon(0 0,100% 0,0 100%)}
-.status{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;background:color-mix(in srgb,var(--on-leaf) 14%,transparent);padding:6px 14px;border-radius:999px}
-.dot{width:10px;height:10px;border-radius:50%;background:#9fd6a8;box-shadow:0 0 0 4px color-mix(in srgb,#9fd6a8 30%,transparent)}
+.hero .lede{margin-top:18px;max-width:46ch;color:var(--ink-soft);font-size:1.08rem}
+.hero .ctas{margin-top:26px;display:grid;gap:10px}
+.cupstage{position:relative;display:grid;gap:0}
+.cup{width:min(100%,340px);margin:0 auto -8px;display:block}
+.steam path{stroke-dasharray:60;animation:steam 3.2s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:.6s}
+.steam path:nth-child(3){animation-delay:1.2s}
+@keyframes steam{0%{stroke-dashoffset:60;opacity:0}30%{opacity:.9}100%{stroke-dashoffset:-60;opacity:0}}
+.bubble{position:relative;background:var(--leaf);color:var(--on-leaf);border-radius:26px 26px 26px 6px;padding:24px 22px 22px;min-width:0}
+.status{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.92rem;background:color-mix(in srgb,var(--on-leaf) 14%,transparent);padding:6px 14px;border-radius:999px}
+.dot{width:10px;height:10px;border-radius:50%;background:#9fd6a8;box-shadow:0 0 0 4px color-mix(in srgb,#9fd6a8 30%,transparent);flex:none}
 .dot.closed{background:#e9a48f;box-shadow:0 0 0 4px color-mix(in srgb,#e9a48f 30%,transparent)}
-.bubble .big{font-family:var(--display);font-size:clamp(2.4rem,5vw,3.2rem);margin-top:18px;line-height:1}
-.bubble .small{opacity:.85;margin-top:8px}
-.bubble .addr{margin-top:22px;padding-top:18px;border-top:1px dashed color-mix(in srgb,var(--on-leaf) 40%,transparent);font-size:.98rem}
-.bubble .hand{color:var(--ochre);position:absolute;right:20px;top:-26px;transform:rotate(-4deg)}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:56px;padding-block:44px 64px}}
+.bubble .big{font-family:var(--display);font-size:clamp(2.2rem,10vw,3.2rem);margin-top:14px;line-height:1}
+.bubble .small{opacity:.85;margin-top:8px;font-size:.95rem}
+.bubble .addr{margin-top:18px;padding-top:16px;border-top:1px dashed color-mix(in srgb,var(--on-leaf) 40%,transparent);font-size:.95rem}
 
-/* faixa de grão */
+/* faixa */
 .ribbon{background:var(--ink);color:var(--paper);overflow:hidden}
-.ribbon .wrap{display:flex;flex-wrap:wrap;gap:10px 34px;padding-block:16px;font-family:var(--display);font-size:1.25rem;justify-content:center}
-.ribbon .wrap span{white-space:nowrap}
-.ribbon i{font-style:normal;color:var(--ochre);margin-right:10px}
+.track{display:flex;gap:34px;width:max-content;padding-block:14px;font-family:var(--display);font-size:1.15rem;animation:slide 28s linear infinite}
+.track span{white-space:nowrap}
+.track i{font-style:normal;color:var(--ochre);margin-right:10px}
+@keyframes slide{to{transform:translateX(-50%)}}
 
-section{padding-block:88px}
-.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 40px;margin-bottom:44px}
+.sec-head{display:grid;gap:14px;margin-bottom:32px}
 .sec-head p{max-width:48ch;color:var(--ink-soft)}
 
 /* sobre */
-.sobre .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.sobre .text{display:grid;gap:18px;color:var(--ink-soft);max-width:58ch}
-.sobre .text p:first-child{color:var(--ink);font-size:1.25rem}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1.5px solid var(--ink)}
-.fact{padding:22px 4px;border-bottom:1px solid var(--line)}
-.fact:nth-child(odd){padding-right:20px;border-right:1px solid var(--line)}
-.fact:nth-child(even){padding-left:20px}
-.fact b{display:block;font-family:var(--display);font-weight:400;font-size:2.4rem;line-height:1}
-.fact span{font-size:.92rem;color:var(--ink-soft)}
-@media (max-width:860px){.sobre .wrap{grid-template-columns:1fr;gap:36px}}
+.sobre .wrap{display:grid;gap:30px}
+.sobre .text{display:grid;gap:16px;color:var(--ink-soft);max-width:58ch}
+.sobre .text p:first-child{color:var(--ink);font-size:1.18rem}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--ink)}
+.fact{padding:18px 0;border-bottom:1px solid var(--line);min-width:0}
+.fact:nth-child(odd){padding-right:14px;border-right:1px solid var(--line)}
+.fact:nth-child(even){padding-left:14px}
+.fact b{display:block;font-family:var(--display);font-weight:400;font-size:2.1rem;line-height:1}
+.fact span{font-size:.88rem;color:var(--ink-soft)}
 
-/* cardápio */
+/* exagero ituano */
+.exagero{background:var(--leaf);color:var(--on-leaf);overflow:hidden}
+.exagero .wrap{display:grid;gap:28px;align-items:center}
+.exagero .eyebrow{color:var(--crema)}
+.exagero h2{margin-top:12px}
+.exagero p.t{margin-top:16px;max-width:46ch;opacity:.9}
+.scale{display:flex;align-items:flex-end;gap:14px;justify-content:center}
+.scale figure{margin:0;display:grid;justify-items:center;gap:8px;font-size:.82rem;opacity:.9}
+.scale svg{display:block}
+
+/* cardápio com abas */
 .cardapio{background:var(--paper-2)}
-.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.menu article{background:var(--paper);border-radius:var(--r);padding:28px 26px 26px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.menu .when{font-family:var(--hand);color:var(--ochre);font-size:1.5rem;line-height:1}
-.menu h3{font-size:1.8rem}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:18px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;min-height:44px;padding:10px 18px;border-radius:999px;border:0;background:var(--paper);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.menu{display:grid;gap:16px}
+.menu article{background:var(--paper);border-radius:var(--r);padding:24px 20px 20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.menu .when{font-family:var(--hand);color:var(--ochre);font-size:1.45rem;line-height:1}
+.menu h3{font-size:1.75rem}
 .menu ul{list-style:none;margin:4px 0 0;padding:0;display:grid}
-.menu li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dotted var(--line);font-size:.98rem}
+.menu li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px dotted var(--line)}
 .menu li:last-child{border-bottom:0}
-.menu li small{color:var(--ink-soft)}
-.note{margin-top:26px;font-size:.92rem;color:var(--ink-soft)}
-@media (max-width:900px){.menu{grid-template-columns:1fr}}
+.menu li small{color:var(--ink-soft);text-align:right}
+.note{margin-top:22px;font-size:.92rem;color:var(--ink-soft)}
 
-/* horários + visita */
-.visita .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+/* visita */
+.visita .wrap{display:grid;gap:36px}
 .hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.hours td{padding:13px 4px;border-bottom:1px solid var(--line)}
-.hours td:last-child{text-align:right;font-weight:500}
+.hours td{padding:13px 2px;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-weight:500;white-space:nowrap}
 .hours tr.today td{color:var(--leaf);font-weight:600}
-.hours tr.today td:first-child::after{content:"hoje";font-family:var(--hand);color:var(--ochre);font-size:1.25rem;margin-left:10px;font-weight:700}
-.place{background:var(--leaf);color:var(--on-leaf);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:18px;min-width:0}
-.place h3{font-size:2rem}
-.place .row{display:flex;flex-wrap:wrap;gap:10px}
+.hours tr.today td:first-child::after{content:"hoje";font-family:var(--hand);color:var(--ochre);font-size:1.25rem;margin-left:8px;font-weight:700}
+.place{background:var(--leaf);color:var(--on-leaf);border-radius:var(--r);padding:26px 20px;display:grid;gap:16px;min-width:0}
+.place .eyebrow{color:var(--crema)}
+.place h3{font-size:1.8rem}
+.place .row{display:grid;gap:10px}
 .place .btn-line{color:var(--on-leaf);box-shadow:inset 0 0 0 1.5px var(--on-leaf)}
-.place .btn-line:hover{background:color-mix(in srgb,var(--on-leaf) 12%,transparent)}
 .place .btn-sun{background:var(--ochre);color:#1f160f}
-.mapdraw{border-radius:12px;background:color-mix(in srgb,var(--on-leaf) 10%,transparent);aspect-ratio:16/7;max-width:100%;position:relative;overflow:hidden}
+.mapdraw{border-radius:12px;background:color-mix(in srgb,var(--on-leaf) 10%,transparent);aspect-ratio:16/8;max-width:100%;overflow:hidden;color:var(--on-leaf)}
 .mapdraw svg{width:100%;height:100%;display:block}
-@media (max-width:860px){.visita .wrap{grid-template-columns:1fr}}
 
 /* contato */
-.contato .wrap{display:grid;gap:36px}
-.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1.5px solid var(--ink)}
-.c{padding:26px 22px 26px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px;min-width:0}
-.c + .c{padding-left:22px;border-left:1px solid var(--line)}
-.c .val{font-family:var(--display);font-size:1.45rem;word-break:break-word}
+.contato{padding-top:24px}
+.contact-grid{display:grid;border-top:1.5px solid var(--ink)}
+.c{padding:22px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;min-width:0}
+.c .val{font-family:var(--display);font-size:1.4rem;overflow-wrap:anywhere}
 .c .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.chip{font:inherit;font-size:.88rem;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--paper-2);color:var(--ink);text-decoration:none;border:0;cursor:pointer}
-.chip:hover{background:var(--line)}
-@media (max-width:860px){.contact-grid{grid-template-columns:1fr}.c + .c{padding-left:0;border-left:0}}
+.chip{font:inherit;font-size:.9rem;font-weight:600;min-height:44px;padding:10px 16px;border-radius:999px;background:var(--paper-2);color:var(--ink);text-decoration:none;border:0;cursor:pointer;display:inline-flex;align-items:center}
 
 footer{background:var(--ink);color:var(--paper)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:34px;font-size:.9rem}
+footer .wrap{display:grid;gap:14px;padding-block:30px;font-size:.88rem}
 footer .logo{color:var(--paper)}
 footer p{opacity:.75}
-.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:.92rem;font-weight:500;z-index:20}
+
+/* barra de ações fixa no celular */
+.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--paper);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.actionbar a{min-height:48px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:.78rem;font-weight:600;text-decoration:none;background:var(--paper-2);color:var(--ink)}
+.actionbar a.wa{background:var(--leaf);color:var(--on-leaf);flex-direction:row;gap:8px;font-size:.95rem}
+.actionbar svg{width:20px;height:20px}
+.toast{position:fixed;left:50%;bottom:calc(var(--bar) + 16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:.92rem;font-weight:500;z-index:20;max-width:calc(100% - 32px)}
+
+/* ---------- tablet ---------- */
+@media (min-width:640px){
+  :root{--sec:80px}
+  .wrap{padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
+  .hero .ctas{display:flex;flex-wrap:wrap}
+  .place .row{display:flex;flex-wrap:wrap}
+  .menu{grid-template-columns:1fr 1fr}
+  .menu article:last-child{grid-column:1/-1}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .c:nth-child(odd){padding-right:20px;border-right:1px solid var(--line)}
+  .c:nth-child(even){padding-left:20px}
+  .c:last-child{grid-column:1/-1;border-right:0;padding-right:0}
+  .sec-head{grid-template-columns:1fr 1fr;align-items:end;gap:16px 40px;margin-bottom:40px}
+  footer .wrap{grid-template-columns:1fr auto;align-items:center}
+}
+
+/* ---------- desktop ---------- */
+@media (min-width:1000px){
+  :root{--sec:96px}
+  body{padding-bottom:0;font-size:1.0625rem}
+  .actionbar,.menu-btn{display:none}
+  .toast{bottom:28px}
+  nav.primary,nav.primary[hidden]{display:flex!important;position:static;padding:0;border:0;gap:24px;background:none}
+  nav.primary a{font-family:var(--body);font-size:.95rem;font-weight:500;padding:0;border:0;color:var(--ink-soft)}
+  nav.primary a:hover{color:var(--ink)}
+  .head-cta{display:inline-flex}
+  header .wrap{padding-block:14px}
+  .hero{padding-block:56px 80px}
+  .hero .wrap{grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+  .tabs{display:none}
+  .menu{grid-template-columns:repeat(3,1fr);gap:20px}
+  .menu article[hidden]{display:flex!important}
+  .menu article:last-child{grid-column:auto}
+  .sobre .wrap,.visita .wrap{grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .exagero .wrap{grid-template-columns:1.1fr 1fr;gap:48px}
+  .contact-grid{grid-template-columns:repeat(3,1fr)}
+  .c,.c:nth-child(odd),.c:nth-child(even),.c:last-child{grid-column:auto;padding:26px 22px;border-right:1px solid var(--line)}
+  .c:first-child{padding-left:0}
+  .c:last-child{border-right:0;padding-right:0}
+  .btn-leaf:hover{filter:brightness(1.1)}
+  .btn-line:hover{background:var(--paper-2)}
+  .chip:hover{background:var(--line)}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .track,.steam path{animation:none}
+  .track{flex-wrap:wrap;width:auto;justify-content:center;gap:10px 28px}
+  .track .dup{display:none}
+}
 </style>
 
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5 0a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 64 64"><path d="M10 24h34v10a17 17 0 0 1-34 0z" fill="currentColor"/><path d="M44 27h3a7 7 0 0 1 0 14h-5" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+</svg>
+
 <header>
   <div class="wrap">
-    <a class="logo" href="#inicio">Café <em>&amp;</em> Prosa</a>
-    <nav aria-label="Principal">
+    <a class="logo" href="#inicio"><svg aria-hidden="true" style="color:var(--leaf)"><use href="#i-cup"/></svg>Café <em>&amp;</em> Prosa</a>
+    <nav class="primary" id="nav" aria-label="Principal" hidden>
       <a href="#sobre">A casa</a>
       <a href="#cardapio">Cardápio</a>
-      <a href="#visita">Horários</a>
+      <a href="#visita">Horários e endereço</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a class="btn btn-leaf" href="https://wa.me/5511974351734" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-leaf head-cta" href="https://wa.me/5511974351734" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path id="menuIcon" d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </header>
 
 <main id="inicio">
-  <section class="hero" style="padding-block:0">
+  <section class="hero">
     <div class="wrap">
       <div>
         <p class="eyebrow">Cafeteria no Novo Centro · Itu, SP</p>
-        <h1 style="margin-top:16px">Café passado na hora,<span>prosa sem pressa.</span></h1>
+        <h1>Café passado na hora,<span>prosa sem pressa.</span></h1>
         <p class="lede">Do primeiro café da manhã ao pão de queijo do fim da tarde, a gente abre cedo para você sentar, pedir mais um e continuar a conversa.</p>
         <div class="ctas">
           <a class="btn btn-leaf" href="#cardapio">Ver o cardápio</a>
           <a class="btn btn-line" href="#visita">Como chegar</a>
         </div>
       </div>
-      <aside class="bubble" aria-label="Funcionamento hoje">
-        <span class="hand">vem tomar um café!</span>
-        <span class="status"><span class="dot" id="dot"></span><span id="status">Aberto hoje</span></span>
-        <p class="big" id="todayHours">7h30 às 19h30</p>
-        <p class="small" id="todayLabel">Segunda a sexta até 19h30 · fins de semana até 17h</p>
-        <p class="addr">Rua Márcia Pierroni, 68<br>Novo Centro, Itu – SP</p>
-      </aside>
+      <div class="cupstage">
+        <svg class="cup" viewBox="0 0 340 200" aria-hidden="true">
+          <g class="steam" fill="none" stroke="var(--ochre)" stroke-width="5" stroke-linecap="round">
+            <path d="M130 70c-12-14 12-22 0-38"/><path d="M165 66c-12-14 12-22 0-38"/><path d="M200 70c-12-14 12-22 0-38"/>
+          </g>
+          <ellipse cx="165" cy="188" rx="130" ry="10" fill="var(--line)"/>
+          <path d="M80 92h170v28a85 70 0 0 1-170 0z" fill="var(--ink)"/>
+          <ellipse cx="165" cy="92" rx="85" ry="12" fill="var(--crema)"/>
+          <path d="M250 104h14a22 22 0 0 1 0 44h-26" fill="none" stroke="var(--ink)" stroke-width="12"/>
+        </svg>
+        <aside class="bubble" aria-label="Funcionamento hoje">
+          <span class="status"><span class="dot" id="dot"></span><span id="status">Aberto hoje</span></span>
+          <p class="big" id="todayHours">7h30 às 19h30</p>
+          <p class="small" id="todayLabel">Segunda a sexta até 19h30 · fins de semana até 17h</p>
+          <p class="addr">Rua Márcia Pierroni, 68 · Novo Centro, Itu</p>
+        </aside>
+      </div>
     </div>
   </section>
 
   <div class="ribbon" aria-hidden="true">
-    <div class="wrap">
-      <span><i>●</i>Café da manhã</span>
-      <span><i>●</i>Almoço</span>
-      <span><i>●</i>Café da tarde</span>
-      <span><i>●</i>Doces e salgados</span>
+    <div class="track">
+      <span><i>●</i>Café da manhã</span><span><i>●</i>Almoço</span><span><i>●</i>Café da tarde</span><span><i>●</i>Doces e salgados</span><span><i>●</i>Encomendas</span>
+      <span class="dup"><i>●</i>Café da manhã</span><span class="dup"><i>●</i>Almoço</span><span class="dup"><i>●</i>Café da tarde</span><span class="dup"><i>●</i>Doces e salgados</span><span class="dup"><i>●</i>Encomendas</span>
     </div>
   </div>
 
@@ -192,21 +295,35 @@ footer p{opacity:.75}
     <div class="wrap">
       <div>
         <p class="eyebrow">A casa</p>
-        <h2 style="margin-top:14px">Um cantinho de Itu feito para conversar.</h2>
-        <p class="hand" style="margin-top:22px">desde 2019 no Novo Centro</p>
+        <h2 style="margin-top:12px">Um cantinho de Itu feito para conversar.</h2>
+        <p class="hand" style="margin-top:18px">desde 2019 no Novo Centro</p>
       </div>
-      <div style="display:grid;gap:36px">
+      <div style="display:grid;gap:30px">
         <div class="text">
-          <p>O Café e Prosa nasceu da ideia mais simples do mundo: café bem feito e uma mesa onde dá vontade de ficar.</p>
+          <p>O Café e Prosa nasceu de uma ideia simples: café bem feito e uma mesa onde dá vontade de ficar.</p>
           <p>Abrimos às 7h30 todos os dias, para quem passa antes do trabalho, para quem marca a reunião aqui e para quem vem no domingo com a família. O cardápio vai do café da manhã ao almoço e segue até o café da tarde.</p>
-          <p>Se você é de Itu, já sabe: aqui tudo é grande. A prosa também.</p>
         </div>
         <div class="facts">
-          <div class="fact"><b>7h30</b><span>abrimos todos os dias da semana</span></div>
+          <div class="fact"><b>7h30</b><span>abrimos todos os dias</span></div>
           <div class="fact"><b>7</b><span>dias por semana de portas abertas</span></div>
-          <div class="fact"><b>2019</b><span>ano em que a primeira xícara foi servida</span></div>
+          <div class="fact"><b>2019</b><span>ano da primeira xícara</span></div>
           <div class="fact"><b>3</b><span>refeições: manhã, almoço e tarde</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exagero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Coisa de Itu</p>
+        <h2>Na cidade dos exageros, a prosa também é grande.</h2>
+        <p class="t">Itu ficou famosa pelo orelhão gigante e pelo semáforo enorme da praça. Aqui o tamanho que importa é outro: o tempo que você fica. Pede outro café, a mesa é sua.</p>
+      </div>
+      <div class="scale" aria-hidden="true">
+        <figure><svg width="44" height="44" style="color:var(--crema)"><use href="#i-cup"/></svg>expresso</figure>
+        <figure><svg width="84" height="84" style="color:var(--crema)"><use href="#i-cup"/></svg>coado</figure>
+        <figure><svg width="150" height="150" style="color:var(--ochre)"><use href="#i-cup"/></svg>tamanho Itu</figure>
       </div>
     </div>
   </section>
@@ -216,12 +333,17 @@ footer p{opacity:.75}
       <div class="sec-head">
         <div>
           <p class="eyebrow">Cardápio</p>
-          <h2 style="margin-top:14px">Para cada hora do dia</h2>
+          <h2 style="margin-top:12px">Para cada hora do dia</h2>
         </div>
         <p>Uma amostra do que sai da nossa cozinha. Os itens mudam conforme a estação; pergunte no balcão ou pelo WhatsApp o que tem hoje.</p>
       </div>
+      <div class="tabs" role="tablist" aria-label="Períodos do cardápio">
+        <button class="tab" role="tab" id="t-manha" aria-controls="p-manha" aria-selected="true" type="button">Manhã</button>
+        <button class="tab" role="tab" id="t-almoco" aria-controls="p-almoco" aria-selected="false" type="button">Almoço</button>
+        <button class="tab" role="tab" id="t-tarde" aria-controls="p-tarde" aria-selected="false" type="button">Tarde</button>
+      </div>
       <div class="menu">
-        <article>
+        <article role="tabpanel" id="p-manha" aria-labelledby="t-manha">
           <span class="when">das 7h30</span>
           <h3>Café da manhã</h3>
           <ul>
@@ -232,18 +354,18 @@ footer p{opacity:.75}
             <li>Suco natural <small>do dia</small></li>
           </ul>
         </article>
-        <article>
+        <article role="tabpanel" id="p-almoco" aria-labelledby="t-almoco">
           <span class="when">ao meio-dia</span>
           <h3>Almoço</h3>
           <ul>
             <li>Prato do dia <small>caseiro</small></li>
-            <li>Sanduíches no pão artesanal</li>
+            <li>Sanduíches <small>pão artesanal</small></li>
             <li>Saladas</li>
             <li>Quiches e tortas salgadas</li>
             <li>Refrigerantes e sucos</li>
           </ul>
         </article>
-        <article>
+        <article role="tabpanel" id="p-tarde" aria-labelledby="t-tarde">
           <span class="when">à tarde</span>
           <h3>Café da tarde</h3>
           <ul>
@@ -263,30 +385,25 @@ footer p{opacity:.75}
     <div class="wrap">
       <div>
         <p class="eyebrow">Horários</p>
-        <h2 style="margin:14px 0 28px">Quando a gente está aqui</h2>
-        <table class="hours" aria-label="Horário de funcionamento">
-          <tbody id="hoursBody"></tbody>
-        </table>
+        <h2 style="margin:12px 0 22px">Quando a gente está aqui</h2>
+        <table class="hours" aria-label="Horário de funcionamento"><tbody id="hoursBody"></tbody></table>
       </div>
       <div class="place">
-        <p class="eyebrow" style="color:var(--ochre)">Visite</p>
+        <p class="eyebrow">Visite</p>
         <h3>Rua Márcia Pierroni, 68</h3>
         <p>Novo Centro · Itu, SP · CEP 13303-525</p>
         <div class="mapdraw" aria-hidden="true">
-          <svg viewBox="0 0 400 175" preserveAspectRatio="xMidYMid slice">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
             <g stroke="currentColor" stroke-opacity=".28" stroke-width="10" fill="none" stroke-linecap="round">
-              <path d="M-10 60 L410 40"/><path d="M-10 140 L410 120"/>
-              <path d="M90 -10 L110 190"/><path d="M290 -10 L270 190"/>
+              <path d="M-10 70 L410 50"/><path d="M-10 160 L410 140"/><path d="M90 -10 L110 210"/><path d="M290 -10 L270 210"/>
             </g>
-            <g stroke="currentColor" stroke-opacity=".14" stroke-width="4" fill="none">
-              <path d="M-10 100 L410 80"/><path d="M190 -10 L195 190"/>
-            </g>
-            <circle cx="195" cy="86" r="22" fill="var(--ochre)" fill-opacity=".25"/>
-            <circle cx="195" cy="86" r="9" fill="var(--ochre)"/>
+            <g stroke="currentColor" stroke-opacity=".14" stroke-width="4" fill="none"><path d="M-10 112 L410 92"/><path d="M190 -10 L195 210"/></g>
+            <circle cx="195" cy="100" r="24" fill="var(--ochre)" fill-opacity=".25"/>
+            <circle cx="195" cy="100" r="10" fill="var(--ochre)"/>
           </svg>
         </div>
         <div class="row">
-          <a class="btn btn-sun" href="https://www.google.com/maps/search/?api=1&query=Rua+M%C3%A1rcia+Pierroni%2C+68%2C+Novo+Centro%2C+Itu+SP" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          <a class="btn btn-sun" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+M%C3%A1rcia+Pierroni%2C+68%2C+Novo+Centro%2C+Itu+SP" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Google Maps</a>
           <a class="btn btn-line" href="https://waze.com/ul?q=Rua%20M%C3%A1rcia%20Pierroni%2068%20Itu%20SP" target="_blank" rel="noopener">Waze</a>
           <button class="btn btn-line" type="button" data-copy="Rua Márcia Pierroni, 68 - Novo Centro, Itu - SP, 13303-525">Copiar endereço</button>
         </div>
@@ -294,12 +411,12 @@ footer p{opacity:.75}
     </div>
   </section>
 
-  <section class="contato" id="contato" style="padding-top:24px">
+  <section class="contato" id="contato">
     <div class="wrap">
-      <div class="sec-head" style="margin-bottom:0">
+      <div class="sec-head">
         <div>
           <p class="eyebrow">Contato</p>
-          <h2 style="margin-top:14px">Bora marcar essa prosa?</h2>
+          <h2 style="margin-top:12px">Bora marcar essa prosa?</h2>
         </div>
         <p>Reservas de mesa, encomendas e eventos. Respondemos pelo WhatsApp durante o horário de funcionamento.</p>
       </div>
@@ -333,49 +450,56 @@ footer p{opacity:.75}
     <p>Rua Márcia Pierroni, 68 · Novo Centro · Itu – SP<br>CNPJ 33.207.579/0001-17</p>
   </div>
 </footer>
-<div class="toast" id="toast" hidden></div>
+
+<nav class="actionbar" aria-label="Ações rápidas">
+  <a href="#visita"><svg aria-hidden="true"><use href="#i-clock"/></svg>Horários</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+M%C3%A1rcia+Pierroni%2C+68%2C+Novo+Centro%2C+Itu+SP" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Rota</a>
+  <a class="wa" href="https://wa.me/5511974351734" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+</nav>
+<div class="toast" id="toast" role="status" hidden></div>
 
 <script>
 (function(){
-  // 0 = domingo
-  const H = [
-    ["Domingo",[7.5,17]],["Segunda",[7.5,19.5]],["Terça",[7.5,19.5]],["Quarta",[7.5,19.5]],
-    ["Quinta",[7.5,19.5]],["Sexta",[7.5,19.5]],["Sábado",[7.5,17]]
-  ];
-  const fmt = h => { const m = Math.round((h%1)*60); return Math.floor(h)+"h"+(m?String(m).padStart(2,"0"):""); };
+  /* menu */
+  const nav=document.getElementById("nav"), mb=document.getElementById("menuBtn"), mi=document.getElementById("menuIcon");
+  const setMenu=open=>{nav.hidden=!open;mb.setAttribute("aria-expanded",open);mb.setAttribute("aria-label",open?"Fechar menu":"Abrir menu");mi.setAttribute("d",open?"M6 6l12 12M18 6L6 18":"M4 7h16M4 12h16M4 17h10");};
+  mb.addEventListener("click",()=>setMenu(nav.hidden));
+  nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
+
+  /* abas do cardápio (celular e tablet) */
+  const tabs=[...document.querySelectorAll(".tab")];
+  const show=id=>tabs.forEach(t=>{const on=t.id===id;t.setAttribute("aria-selected",on);document.getElementById(t.getAttribute("aria-controls")).hidden=!on;});
+  tabs.forEach(t=>t.addEventListener("click",()=>show(t.id)));
+
+  /* horários */
+  const H=[["Domingo",[7.5,17]],["Segunda",[7.5,19.5]],["Terça",[7.5,19.5]],["Quarta",[7.5,19.5]],["Quinta",[7.5,19.5]],["Sexta",[7.5,19.5]],["Sábado",[7.5,17]]];
+  const fmt=h=>{const m=Math.round((h%1)*60);return Math.floor(h)+"h"+(m?String(m).padStart(2,"0"):"");};
   let now;
-  try {
-    const p = new Intl.DateTimeFormat("en-US",{timeZone:"America/Sao_Paulo",weekday:"short",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date());
-    const g = t => p.find(x=>x.type===t).value;
-    const wd = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(g("weekday"));
-    now = {d:wd, h:(parseInt(g("hour"),10)%24)+parseInt(g("minute"),10)/60};
-  } catch(e){ const d=new Date(); now={d:d.getDay(),h:d.getHours()+d.getMinutes()/60}; }
+  try{
+    const p=new Intl.DateTimeFormat("en-US",{timeZone:"America/Sao_Paulo",weekday:"short",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date());
+    const g=t=>p.find(x=>x.type===t).value;
+    now={d:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(g("weekday")),h:(parseInt(g("hour"),10)%24)+parseInt(g("minute"),10)/60};
+  }catch(e){const d=new Date();now={d:d.getDay(),h:d.getHours()+d.getMinutes()/60};}
 
-  const body = document.getElementById("hoursBody");
-  [1,2,3,4,5,6,0].forEach(i=>{
-    const tr=document.createElement("tr"); if(i===now.d) tr.className="today";
-    tr.innerHTML="<td>"+H[i][0]+"</td><td>"+fmt(H[i][1][0])+" – "+fmt(H[i][1][1])+"</td>";
-    body.appendChild(tr);
-  });
+  const body=document.getElementById("hoursBody");
+  [1,2,3,4,5,6,0].forEach(i=>{const tr=document.createElement("tr");if(i===now.d)tr.className="today";tr.innerHTML="<td>"+H[i][0]+"</td><td>"+fmt(H[i][1][0])+" – "+fmt(H[i][1][1])+"</td>";body.appendChild(tr);});
 
-  const [o,c] = H[now.d][1];
-  const st=document.getElementById("status"), dot=document.getElementById("dot");
-  document.getElementById("todayHours").textContent = fmt(o)+" às "+fmt(c);
-  document.getElementById("todayLabel").textContent = H[now.d][0]+" · segunda a sexta até 19h30, fins de semana até 17h";
-  if(now.h>=o && now.h<c){ st.textContent="Aberto agora · fecha às "+fmt(c); }
-  else {
-    dot.classList.add("closed");
-    if(now.h<o) st.textContent="Fechado · abre hoje às "+fmt(o);
-    else { const n=(now.d+1)%7; st.textContent="Fechado · abre "+(n===0?"domingo":"amanhã")+" às "+fmt(H[n][1][0]); }
-  }
+  const [o,c]=H[now.d][1], st=document.getElementById("status"), dot=document.getElementById("dot");
+  document.getElementById("todayHours").textContent=fmt(o)+" às "+fmt(c);
+  document.getElementById("todayLabel").textContent=H[now.d][0]+" · seg. a sex. até 19h30, fins de semana até 17h";
+  if(now.h>=o&&now.h<c) st.textContent="Aberto agora · fecha às "+fmt(c);
+  else{dot.classList.add("closed");if(now.h<o) st.textContent="Fechado · abre hoje às "+fmt(o);else{const n=(now.d+1)%7;st.textContent="Fechado · abre amanhã às "+fmt(H[n][1][0]);}}
 
-  const toast=document.getElementById("toast"); let t;
-  const show=m=>{toast.textContent=m;toast.hidden=false;clearTimeout(t);t=setTimeout(()=>toast.hidden=true,2200);};
+  /* abre o cardápio no período atual */
+  show(now.h<11?"t-manha":now.h<15?"t-almoco":"t-tarde");
+
+  /* copiar */
+  const toast=document.getElementById("toast");let t;
+  const say=m=>{toast.textContent=m;toast.hidden=false;clearTimeout(t);t=setTimeout(()=>toast.hidden=true,2200);};
   document.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",()=>{
     const v=b.getAttribute("data-copy");
-    if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(v).then(()=>show("Copiado: "+v),()=>show(v));
-    } else show(v);
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(()=>say("Copiado: "+v),()=>say(v));
+    else say(v);
   }));
 })();
 </script>
